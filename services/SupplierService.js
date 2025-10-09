@@ -5,4 +5,12 @@ const addSupplier = async (supplierData, productId) => {
     return await newSupplier.save();
 };
 
-export { addSupplier };
+const updateSupplier = async (supplierId, updateData) => {
+    return await Supplier.findByIdAndUpdate(supplierId, updateData, { new: true,  runValidators: true });
+}
+
+const deleteSupplier = async (supplierId) => {
+    return await Supplier.findByIdAndDelete(supplierId);
+}
+
+export { addSupplier, updateSupplier, deleteSupplier };
