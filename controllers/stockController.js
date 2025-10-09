@@ -1,11 +1,11 @@
-import { addStock, decreaseStock } from "../services/stocksServices";
+import { updateStock, decreaseStock } from "../services/stocksServices";
 
-export const AddStock = async (req, res) => {
+export const UpdateStock = async (req, res) => {
     try {
         const ProductId = req.params
         const updatedStock = req.body
 
-        const updatedProduct = await addStock(ProductId, updatedStock)
+        const updatedProduct = await updateStock(ProductId, updatedStock)
 
         return res.status(200).json(updatedProduct);
     } catch (error) {
