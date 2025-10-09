@@ -1,6 +1,7 @@
 import express from "express";
 import { createProduct, updateProduct, deleteProduct, getProduct, searchProducts } from "../controllers/productController.js";
 import { validateProduct } from "../validators/product_input.js";
+const { authenticate, authorizeRoles } = require('../middleware/Restriction.js');
 
 const router = express.Router();
 
