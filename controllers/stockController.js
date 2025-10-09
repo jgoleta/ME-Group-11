@@ -2,8 +2,8 @@ import { updateStock, decreaseStock } from "../services/stocksServices";
 
 export const UpdateStock = async (req, res) => {
     try {
-        const ProductId = req.params
-        const updatedStock = req.body
+        const ProductId = req.params;
+        const updatedStock = req.body;
 
         const updatedProduct = await updateStock(ProductId, updatedStock)
 
@@ -15,8 +15,8 @@ export const UpdateStock = async (req, res) => {
 
 export const DecreaseStock = async (req, res) => {
     try {
-        const ProductId = req.params
-        const updatedStock = req.body
+        const ProductId = req.params;
+        const updatedStock = req.body;
 
         const updatedProduct = await decreaseStock(ProductId, updatedStock)
 
