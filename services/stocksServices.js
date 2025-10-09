@@ -33,15 +33,15 @@ const decreaseStock = async (productId, updateStock) => {
     }
 }
 
-const flagLowStock = async (productId) => {
-    try {
-        const product = await Product.findById(productId);
+const flagLowStock = async (req, res, next) => {
+
+    const product = await Product.findById(req.params);
 
         if (product.stock < 10) {
             return res.status(200).json({message: `${product.name} stock is low`})
         }
-    } catch (error) {
-        res.status(500).json({error: error.message});
-    }
+
+    next();
 }
+
 export default { updateStock, decreaseStock, flagLowStock };
