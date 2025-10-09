@@ -14,11 +14,11 @@ const deleteSupplier = async (supplierId) => {
 }
 
 const getSupplierById = async (supplierId) => {
-    return await Supplier.findById(supplierId);
+    return await Supplier.findById(supplierId).populate('productId');
 }
 
 const getAllSuppliers = async () => {
-    return await Supplier.find();   
+    return await Supplier.find().populate('productId');
 };
 
 export { addSupplier, updateSupplier, deleteSupplier , getSupplierById, getAllSuppliers };
