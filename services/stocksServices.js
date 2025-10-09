@@ -37,8 +37,8 @@ const flagLowStock = async (req, res, next) => {
 
     const product = await Product.findById(req.params);
 
-        if (product.stock < 10) {
-            return res.status(200).json({message: `${product.name} stock is low`})
+        if (product.stock < 5) {
+            return res.status(200).json({message: `${product.name} stock is low, Please Restock`})
         }
 
     next();
