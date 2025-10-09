@@ -1,6 +1,6 @@
 import Product from "../models/product_model.js";
 
-const addnewProduct = async (Product) => {
+const createProduct = async (Product) => {
     return await Product.find();
 }
 
@@ -13,7 +13,7 @@ const deleteProduct = async (id) => {
 }
 
 export default {
-    addnewProduct,
+    createProduct,
     updateProduct,
     deleteProduct
 }
