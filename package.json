@@ -22,7 +22,10 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "joi": "^18.0.1",
+<<<<<<< HEAD
     "jsonwebtoken": "^9.0.2",
+=======
+>>>>>>> 9b81eb0 (setup frontend)
     "mongoose": "^8.19.1"
   }
 }
