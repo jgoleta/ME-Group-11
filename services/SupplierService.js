@@ -13,5 +13,9 @@ const deleteSupplier = async (supplierId) => {
     return await Supplier.findByIdAndDelete(supplierId);
 }
 
-export { addSupplier, updateSupplier, deleteSupplier };
+const getSupplierById = async (supplierId) => {
+    return await Supplier.findById(supplierId);
+}
+
+export { addSupplier, updateSupplier, deleteSupplier , getSupplierById };
 
