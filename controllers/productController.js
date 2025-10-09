@@ -41,3 +41,15 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json({ message: "Error deleting Product", error });
     }
 };
+
+export const searchProducts = async (req, res) => {
+    try {
+        const { name, supplierName } = req.query;
+        const searchQuery = { name, supplierName };
+        
+        const products = await ProductService.searchProducts(searchQuery);
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: "Error searching products", error });
+    }
+};
