@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     username: { 
         type: String,
         required: true, 
-        unique: true, 
+        unique: true 
     },
     password: {
         type: String,
@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
+<<<<<<< HEAD
         enum:['admin', 'staff'],
     }, 
 })
+=======
+        enum:['admin', 'staff']
+    }, 
+})
+>>>>>>> 9b81eb0 (setup frontend)
