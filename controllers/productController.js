@@ -1,5 +1,14 @@
 import ProductService from "../services/new_product.js";
 
+export const getProduct = async (req, res) => {
+    try {
+        const products = await ProductService.getAllProducts();
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching products", error });
+    }
+};
+
 export const createProduct = async (req, res) => {
     try {
         const Product = await ProductService.createProduct(req.body);
