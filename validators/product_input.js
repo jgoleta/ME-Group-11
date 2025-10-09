@@ -1,4 +1,4 @@
-export const validateUser = (req, res, next) => {
+export const validateProduct = (req, res, next) => {
     console.log(req);
     const { name, price } = req.body;
 
