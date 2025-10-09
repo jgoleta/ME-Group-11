@@ -6,9 +6,9 @@ const { authenticate, authorizeRoles } = require('../middleware/Restriction.js')
 const router = express.Router();
 
 router.get("/", getProduct);
-router.get("/search", searchProducts);
-router.post("/", authenticate, authorizeRoles('staff', 'admin'), validateProduct, createProduct);
-router.put("/:id", authenticate, authorizeRoles('staff', 'admin'), validateProduct, updateProduct);
-router.delete("/:id", authenticate, authorizeRoles('staff', 'admin'), deleteProduct);
+router.get("/:id", searchProducts);
+router.post("/", validateProduct, createProduct);
+router.put("/:id", validateProduct, updateProduct);
+router.delete("/:id", deleteProduct)
 
 export default router;

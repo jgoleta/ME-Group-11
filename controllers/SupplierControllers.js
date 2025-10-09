@@ -10,6 +10,7 @@ export const createSupplier = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
  
 export const getSuppliers = async (req, res) => {
     try {
