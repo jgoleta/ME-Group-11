@@ -1,31 +1,25 @@
 import Product from "../models/product_model";
 
-const addStock = async (req, res) => {
+const updateStock = async (productId, updateStock) => {
     try {
-        const productId = req.params;
-        const updateStock = req.body;
 
-        const updatedProduct = await Product.findByIdAndUpdate(
+        return await Product.findByIdAndUpdate(
             productId,
             {
                 stock: updateStock
             },
             { new: true }
         );
-
-        res.status(200).json(updatedProduct);
 
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
-const decreaseStock = async (res, res) => {
+const decreaseStock = async (productId, updateStock) => {
     try {
-        const productId = req.params;
-        const updateStock = req.body;
 
-        const updatedProduct = await Product.findByIdAndUpdate(
+        return await Product.findByIdAndUpdate(
             productId,
             {
                 stock: updateStock
@@ -33,10 +27,21 @@ const decreaseStock = async (res, res) => {
             { new: true }
         );
 
-        res.status(200).json(updatedProduct)
     } catch (error) {
-        
+        res.status(500).json({error: error.message});
+
     }
 }
 
-export default { addStock, decreaseStock };
+const flagLowStock = async (req, res, next) => {
+
+    const product = await Product.findById(req.params);
+
+        if (product.stock < 5) {
+            return res.status(200).json({message: `${product.name} stock is low, Please Restock`})
+        }
+
+    next();
+}
+
+export default { updateStock, decreaseStock, flagLowStock };

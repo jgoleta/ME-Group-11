@@ -13,5 +13,13 @@ const deleteSupplier = async (supplierId) => {
     return await Supplier.findByIdAndDelete(supplierId);
 }
 
-export { addSupplier, updateSupplier, deleteSupplier };
+const getSupplierById = async (supplierId) => {
+    return await Supplier.findById(supplierId).populate('productId');
+}
+
+const getAllSuppliers = async () => {
+    return await Supplier.find().populate('productId');
+};
+
+export { addSupplier, updateSupplier, deleteSupplier , getSupplierById, getAllSuppliers };
 
