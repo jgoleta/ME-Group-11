@@ -1,4 +1,4 @@
-import Product from "..\models\product_model.js";
+import Product from "../models/product_model.js";
 
 const addnewProduct = async (Product) => {
     return await Product.find();
