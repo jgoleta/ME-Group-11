@@ -4,8 +4,8 @@ import { validateSupplier } from '../validators/SupplierValidator.js';
 
 const router = express.Router();
 
-router.get('/', getAllSuppliers);
-router.post('/', validateSupplier, createSupplier);
+router.get('/suppliers', getAllSuppliers);
+router.post('/suppliers', validateSupplier, createSupplier);
 router.get('/:id', getSupplierById);
 router.put('/:id', validateSupplier, updateSupplier);
 router.delete('/:id', deleteSupplier);
