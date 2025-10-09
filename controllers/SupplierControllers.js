@@ -37,8 +37,7 @@ export const updateSupplier = async (req, res) => {
         const { name, contact, address } = req.body;
         const updatedSupplier = await Supplier.findByIdAndUpdate(
             req.params.id,
-            { name, contact, address },
-            { new: true }
+            { name, contact, address, new: true, runValidators: true },
         );
         if (!updatedSupplier) {
             return res.status(404).json({ error: 'Supplier not found' });
