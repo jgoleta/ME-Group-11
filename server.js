@@ -3,6 +3,11 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import supplierRoutes from "./routes/SupplierRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+import stockRoutes from "./routes/StockRoutes.js";
+app.use('/suppliers', supplierRoutes);
+app.use('/products', productRoutes);
+app.use('/stocks', stockRoutes);
 
 
 dotenv.config();
