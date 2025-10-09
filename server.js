@@ -5,10 +5,6 @@ import dotenv from "dotenv";
 import supplierRoutes from "./routes/SupplierRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import stockRoutes from "./routes/StockRoutes.js";
-app.use('/suppliers', supplierRoutes);
-app.use('/products', productRoutes);
-app.use('/stocks', stockRoutes);
-
 
 dotenv.config();
 const app = express();
@@ -19,6 +15,11 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
+
+// route registration should happen after app and middleware are set up
+app.use('/suppliers', supplierRoutes);
+app.use('/products', productRoutes);
+app.use('/stocks', stockRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,

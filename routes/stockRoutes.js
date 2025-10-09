@@ -1,8 +1,10 @@
 import express from 'express';
 
-import { ValidateStocks } from '../validators/stockValidator';
-import { UpdateStock } from '../controllers/stockController';
+import { ValidateStocks } from '../validators/stockValidator.js';
+import { UpdateStock } from '../controllers/stockController.js';
 
 const router = express.Router();
 
-router.put("/api/products/:id/stock", ValidateStocks, UpdateStock);
+router.put("/products/:id", ValidateStocks, UpdateStock);
+
+export default router;

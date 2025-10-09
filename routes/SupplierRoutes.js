@@ -1,10 +1,10 @@
 import express from 'express';
-import { getAllSuppliers, createSupplier, getSupplierById, updateSupplier, deleteSupplier } from '../controllers/SupplierController.js';
+import { getSuppliers, createSupplier, getSupplierById, updateSupplier, deleteSupplier } from '../controllers/SupplierControllers.js';
 import { validateSupplier } from '../validators/SupplierValidator.js';
 
 const router = express.Router();
 
-router.get('/', getAllSuppliers);
+router.get('/', getSuppliers);
 router.post('/', validateSupplier, createSupplier);
 router.get('/:id', getSupplierById);
 router.put('/:id', validateSupplier, updateSupplier);

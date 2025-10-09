@@ -17,9 +17,9 @@ const getSupplierById = async (supplierId) => {
     return await Supplier.findById(supplierId).populate('productId');
 }
 
-const getAllSuppliers = async () => {
+const getSuppliers = async () => {
     return await Supplier.find().populate('productId');
 };
 
-export { addSupplier, updateSupplier, deleteSupplier , getSupplierById, getAllSuppliers };
+export { addSupplier, updateSupplier, deleteSupplier , getSupplierById, getSuppliers };
 

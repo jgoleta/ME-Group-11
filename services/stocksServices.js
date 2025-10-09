@@ -1,47 +1,45 @@
-import Product from "../models/product_model";
+import Product from "../models/product_model.js";
 
-const updateStock = async (productId, updateStock) => {
+const updateStock = async (productId, newStock) => {
     try {
-
+        // productId expected to be the id string
         return await Product.findByIdAndUpdate(
             productId,
-            {
-                stock: updateStock
-            },
+            { stock: newStock },
             { new: true }
         );
 
     } catch (error) {
-        res.status(500).json({error: error.message});
+        // Service functions should throw and let controllers handle responses
+        throw new Error(error.message || 'Failed to update stock');
     }
 }
 
-const decreaseStock = async (productId, updateStock) => {
+const decreaseStock = async (productId, amount) => {
     try {
+        // Decrease stock by amount
+        const product = await Product.findById(productId);
+        if (!product) throw new Error('Product not found');
 
-        return await Product.findByIdAndUpdate(
-            productId,
-            {
-                stock: updateStock
-            },
-            { new: true }
-        );
+        product.stock = (product.stock || 0) - amount;
+        if (product.stock < 0) product.stock = 0;
+
+        await product.save();
+        return product;
 
     } catch (error) {
-        res.status(500).json({error: error.message});
+        throw new Error(error.message || 'Failed to decrease stock');
 
     }
 }
 
-const flagLowStock = async (req, res, next) => {
-
-    const product = await Product.findById(req.params);
-
-        if (product.stock < 5) {
-            return res.status(200).json({message: `${product.name} stock is low, Please Restock`})
-        }
-
-    next();
+const flagLowStock = async (productId) => {
+    const product = await Product.findById(productId);
+    if (!product) return null;
+    if (product.stock < 5) {
+        return { message: `${product.name} stock is low, Please Restock` };
+    }
+    return null;
 }
 
-export default { updateStock, decreaseStock, flagLowStock };
+export { updateStock, decreaseStock, flagLowStock };
